@@ -1,0 +1,77 @@
+[package]
+name = "proj2tree"
+version = "0.1.2"
+edition = "2024"
+description = "Генератор структуры проекта в Markdown"
+authors = ["github:kosar33"]
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.8"
+clap = { version = "4.4", features = ["derive"] }
+ignore = "0.4"
+
+[package.metadata.proj2tree]
+# Исключаемые директории
+exclude_dirs = [
+    "target",
+    "node_modules", 
+    "__pycache__",
+    ".git",
+    ".idea",
+    ".vscode",
+    "build",
+    "dist",
+    ".next",
+    "out"
+]
+
+# Исключаемые файлы (по имени)
+exclude_files = [
+    "*.pyc",
+    "*.class",
+    "*.jar",
+    "*.war",
+    "*.ear",
+    "*.zip",
+    "*.tar.gz",
+    "*.log",
+    "*.tmp",
+    "*.temp",
+    "*.lock"
+]
+
+# Исключаемые расширения файлов
+exclude_extensions = [
+    "png", "jpg", "jpeg", "gif", "bmp", "ico", "svg",
+    "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx",
+    "zip", "tar", "gz", "rar", "7z", "exe", "dll", "bin",
+    "obj", "pdb", "so", "dylib", "class", "jar", "war",
+    "mp3", "mp4", "avi", "mkv", "mov", "wav", "flac",
+    "ttf", "otf", "woff", "woff2"
+]
+
+# Максимальный размер файла для чтения (в байтах)
+max_file_size = 1048576  # 1MB
+
+# Маппинг расширений на языки для подсветки синтаксиса
+[package.metadata.proj2tree.extension_mapping]
+rs = "rust"
+py = "python"
+js = "javascript"
+ts = "typescript"
+cpp = "cpp"
+c = "c"
+java = "java"
+html = "html"
+css = "css"
+xml = "xml"
+json = "json"
+toml = "toml"
+yaml = "yaml"
+yml = "yaml"
+md = "markdown"
+sh = "bash"
+ps1 = "powershell"
+bat = "batch"
+sql = "sql"
